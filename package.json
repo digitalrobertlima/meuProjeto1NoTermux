@@ -1,0 +1,18 @@
+{
+  "name": "meuprojeto1notermux",
+  "version": "1.0.0",
+  "description": "an app for price",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "keywords": [
+    "btc",
+    "price"
+  ],
+  "author": "scr1pt3r",
+  "license": "MIT",
+  "dependencies": {
+    "cli-color": "^2.0.2"
+  }
+}
