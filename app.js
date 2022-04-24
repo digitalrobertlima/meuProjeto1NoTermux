@@ -46,7 +46,16 @@ function getBTC() {
 }
 
 function getCor(price) {
-	if(price < ) {
+	if(price < history[history.length - 1]) {
+		price = red(price);
+
+		return price;
+	}
+
+	if(price > history[history.length - 1]) {
+		price = green(price);
+
+		return price;
 	}
 }
 
@@ -85,7 +94,7 @@ function imprimeData(data) {
 		},
 			time);
 
-	ultimo = getCor(ultimo);
+	ultimo = getCor(parseFloat(ultimo).toFixed(2));
 
 	console.log("\nÚltimo preço registrado: " + ultimo);
 	console.log();
