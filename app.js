@@ -18,7 +18,7 @@ function getJSON(api) {
 }
 
 function getBTC() {
-	console.log('\nIniciando requisição na API da BitPreço...');
+	console.log(green('\nIniciando requisição na API da BitPreço...'));
 
 	const url = "https://api.bitpreco.com/btc-brl/";
 	const ticker = url + "ticker";
@@ -26,24 +26,32 @@ function getBTC() {
 	const trades = url + "trades";
 
 	let tickerData = getJSON(ticker);
-	let lastPrice = tickerData.last;
-	let timestamp = tickerData.timestamp;
-	let low24H = tickerData.low;
-	let high24H = tickerData.high;
+	let bookData = getJSON(book);
+	let tradesData = getJSON(trades);
 
-	console.log(yellow('Resumo do mercado: '));
-	console.log('\nÚltimo preço registrado: ' + parseFloat(lastPrice).toFixed(2));
-	console.log(tickerData);
-	let dados = getJSON(book);
-	console.log('Tamanho: ' + dados.timestamp);
+	let data = [
+		tickerData,
+		bookData,
+		tradesData
+	];
+
+	//for debug:
+	//console.log(data[0].last);
+
+	return data;
+}
+
+function imprimeData(data) {
+
 }
 
 function main() {
-	console.log('programa iniciado');
+	console.log('\nBem-vind@\n\nprograma iniciado...');
 
-	getBTC();
+	let data = getBTC();
+	imprimeData(data);
 
-	return
+	return;
 }
 
 main();
