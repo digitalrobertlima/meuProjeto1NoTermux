@@ -5,6 +5,10 @@ const green = clc.green;
 const red = clc.red;
 const blue = clc.blue;
 
+let history = [];
+const time = 30000; //30s //in milisseconds
+const timeR = 15 //15m ::: tempo em minutos
+
 function getJSON(api) {
 	const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 	const request = new XMLHttpRequest();
@@ -41,7 +45,50 @@ function getBTC() {
 	return data;
 }
 
+function getCor(price) {
+	if(price < ) {
+	}
+}
+
+function apagarArray() {
+	history.splice(0,1);
+
+	//for debug:
+	console.log(history);
+}
+
+function registrador(price) {
+	if(price != history[history.length - 1]) {
+		history.push(price);
+
+		setTimeout(apagarArray, timeR * 60000)
+		
+		//for debug:
+		console.log(history);
+	}
+}
+
 function imprimeData(data) {
+	const welcome = "Você está observando o mercado :" + data[0].market;
+	console.log(welcome);
+
+	let ultimo = data[0].last;
+	let low = data[0].low;
+	let high = data[0].high;
+	let bestBuy = data[0].buy;
+	let bestSell = data[0].sell;
+	let timestamp = data[0].timestamp;
+
+	setTimeout(() => {
+			ultimo = parseFloat(ultimo).toFixed(2);
+			registrador(ultimo);
+		},
+			time);
+
+	ultimo = getCor(ultimo);
+
+	console.log("\nÚltimo preço registrado: " + ultimo);
+	console.log();
 
 }
 
