@@ -57,6 +57,10 @@ function getCor(price) {
 
 		return price;
 	}
+
+	if(history == []) {
+		return price;
+	}
 }
 
 function apagarArray() {
@@ -78,7 +82,7 @@ function registrador(price) {
 }
 
 function imprimeData(data) {
-	const welcome = "Você está observando o mercado :" + data[0].market;
+	const welcome = "Você está observando o mercado: " + data[0].market;
 	console.log(welcome);
 
 	let ultimo = data[0].last;
@@ -94,7 +98,9 @@ function imprimeData(data) {
 		},
 			time);
 
-	ultimo = getCor(parseFloat(ultimo).toFixed(2));
+	ultimo = parseFloat(ultimo).toFixed(2);
+	ultimo = getCor(ultimo);
+	console.log(ultimo);
 
 	console.log("\nÚltimo preço registrado: " + ultimo);
 	console.log();
